@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink, Github, Globe, Bot, Zap, TrendingUp, LucideIcon, Palette } from "lucide-react";
+import { ExternalLink, Github, Globe, Bot, Zap, TrendingUp, LucideIcon, Palette, Code, MessageSquare, DollarSign, Music } from "lucide-react";
 
 interface Project {
   title: string;
@@ -20,6 +20,76 @@ interface Project {
 
 export default function Projects() {
   const projects: Project[] = [
+    {
+      title: "PLAYCE – Context Engineering Playground",
+      description: "A visual playground for understanding how different types of context affect LLM responses. Users can toggle between system prompts, user messages, examples, and constraints to observe how small changes impact model behavior — all within a minimal, real-time interface. Built to help developers and prompt engineers explore multi-component prompting concepts with clarity.",
+      tags: ["React", "Tailwind CSS", "Framer Motion", "OpenAI API", "Cursor"],
+      links: {
+        live: "https://playceai.vercel.app",
+        github: null
+      },
+      featured: true,
+      results: [
+        "Built entirely in Cursor using React, Tailwind, and Framer Motion",
+        "Modular UI allows composable prompt construction and instant response rendering",
+        "Designed for LLM power users, AI engineers, and curious tinkerers",
+        "Deploys instantly on Vercel with full light/dark mode support"
+      ],
+      icon: Code
+    },
+    {
+      title: "Metamorphic – 3D Audiovisual NFT Album",
+      description: "I served as Project Manager for Metamorphic, a genre-defying audiovisual NFT album experience by UK-based artist DAILLY, produced in collaboration with BeetsDAO and Async Art. I coordinated all project deliverables across three continents and secured key partnerships including the minting platform (Async Art) and the launch venue at Art Basel Miami 2021.",
+      tags: ["Project Management", "Creative Technology", "Web3", "NFT Infrastructure", "Async Art", "XR Experiences"],
+      links: {
+        live: "https://www.entrine.com/cases/metamorphic",
+        github: null
+      },
+      featured: false,
+      results: [
+        "Coordinated between international teams in the UK, Eastern Europe, and the US",
+        "Managed artist relations, creative agency deliverables, and DAO-level stakeholder updates",
+        "Led negotiations and logistics for venue partnership with Art Basel Miami",
+        "Oversaw minting and smart contract deployment on Async Art",
+        "Delivered the first immersive web3-native audiovisual album launched with multi-device 3D access",
+      ],
+      icon: Music
+    },
+    {
+      title: "BONKbot – Solana Trading Bot Docs",
+      description: "I joined the BONKbot team as a contractor to overhaul their product documentation and write new user guides for advanced trading features like Limit Orders, Trailing Stop Loss, and DCA. BONKbot is a Telegram-native trading bot for the Solana ecosystem, known for its lightning-fast UX and deep DEX integration. Over the 5 months I worked on this project, BONKbot generated over $100M in trading volume**.",
+      tags: ["Technical Writing", "Product Documentation", "Solana", "Telegram Bots", "DeFi UX", "Advanced Trading"],
+      links: {
+        live: "https://docs.bonkbot.io/",
+        github: null
+      },
+      featured: false,
+      results: [
+        "Rewrote and structured core product documentation for both new and power users",
+        "Authored guides for high-frequency features like Limit Orders, Trailing SL, and Dollar Cost Averaging",
+        "Collaborated with product and engineering teams to ship educational content alongside feature releases",
+        "Helped onboard thousands of users into Solana trading through accessible, well-structured docs"
+      ],
+      icon: MessageSquare
+    },
+    {
+      title: "Reveel – Web3 Payments Protocol",
+      description: "As a part-time Growth Consultant, I helped scale Reveel's developer ecosystem by executing hackathons, maintaining technical documentation, and leading strategic partnerships. Reveel enables seamless, multi-chain stablecoin payments across any currency, chain, or wallet — including AI agent use cases.",
+      tags: ["Blockchain", "SDK Documentation", "Developer Relations", "Web3 Payments", "Protocol Integration"],
+      links: {
+        live: "https://reveel.id/",
+        github: null
+      },
+      featured: false,
+      results: [
+        "Executed global hackathon activations, driving 5x growth in developer participation",
+        "Maintained V2 documentation for Reveel Protocol and Revenue Share platform",
+        "Wrote detailed guides on SDK usage, protocol concepts, marketplace integrations, and use cases",
+        "Helped drive protocol revenue through artist collaborations and partner integrations",
+        "Collaborated with a team backed by Binance Labs and trusted by 100K+ users"
+      ],
+      icon: DollarSign
+    },
     {
       title: "Attention.com - AI Sales Agents",
       description: "As Founding Forward Deployed Engineer, I build practical AI Agents that process 30,000+ hours of customer conversations monthly, turning them into revenue-driving actions for sales and success teams. Led technical onboarding and implementation efforts that bridge customer needs with AI capabilities.",
@@ -45,7 +115,7 @@ export default function Projects() {
         live: "https://artblocks.io",
         github: null
       },
-      featured: true,
+      featured: false,
       results: [
         "Drove $20M+ in sales with marquee brands like Red Bull Racing, Sotheby's, and Shiseido",
         "Audited and quality-assured 200+ creative code scripts for resolution-agnostic outputs",
@@ -70,8 +140,7 @@ export default function Projects() {
             My Projects
           </h1>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            A collection of projects that showcase my skills in AI engineering, 
-            sales enablement, and creating impactful technical solutions.
+            Projects that reflect how I think and build. Whether I'm designing AI workflows, managing cross-continental web3 releases, or writing docs that make complex systems click.
           </p>
         </motion.div>
 
@@ -93,7 +162,14 @@ export default function Projects() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+                <Card className="h-full hover:shadow-lg transition-shadow duration-300 relative">
+                  {index === 0 && (
+                    <div className="absolute -top-2 -right-2 z-10">
+                      <span className="bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">
+                        New
+                      </span>
+                    </div>
+                  )}
                   <CardHeader>
                     <div className="flex items-center space-x-3">
                       <div className="p-2 bg-primary/10 rounded-lg">
@@ -136,17 +212,23 @@ export default function Projects() {
                       ))}
                     </div>
                     <div className="flex gap-3 pt-4">
-                      <Button size="sm" variant="outline" asChild>
-                        <a
-                          href={project.links.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-2"
-                        >
-                          <Globe className="h-4 w-4" />
-                          <span>Visit Site</span>
-                        </a>
-                      </Button>
+                      {project.links.live ? (
+                        <Button size="sm" variant="outline" asChild>
+                          <a
+                            href={project.links.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-2"
+                          >
+                            <Globe className="h-4 w-4" />
+                            <span>{project.title.includes("Metamorphic") ? "View Case Study" : "Visit Site"}</span>
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button size="sm" variant="outline" disabled>
+                          <span>More info on request</span>
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
