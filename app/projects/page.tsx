@@ -46,7 +46,7 @@ function ProjectsContent() {
   const projects: Project[] = [
     {
       title: "Attention.com - AI Sales Agents",
-      description: "As Founding Forward Deployed Engineer, I build practical AI Agents that process 30,000+ hours of customer conversations monthly, turning them into revenue-driving actions for sales and success teams. Led technical onboarding and implementation efforts that bridge customer needs with AI capabilities.",
+      description: "As Founding Forward Deployed Engineer at Attention, I design and deploy AI agents that integrate directly with CRM and communication systems — surfacing insights, coaching reps, and accelerating deal velocity in real time. In my first six months, I’ve shipped 200+ agents now used daily by 80+ companies across AI healthcare, cybersecurity, legal tech, real estate, and more.",
       tags: ["AI", "Sales Enablement", "CRM Integration", "Context Engineering", "Account Management", "GTM"],
       links: {
         live: "https://attention.com",

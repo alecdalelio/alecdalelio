@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Card, CardTitle, CardContent } from "@/components/ui/card";
 import { Linkedin, Github, Mail } from "lucide-react";
 
 export default function AboutPage() {
@@ -179,18 +180,12 @@ export default function AboutPage() {
 
 function FocusCard({ title, desc, icon, delay }: { title: string; desc: string; icon: string; delay: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="p-6 rounded-xl border border-border bg-muted/30 hover:bg-muted/50 hover:shadow-lg transition-all duration-300"
-    >
-      <div className="text-lg font-semibold flex items-center gap-3 mb-3 text-foreground">
+    <Card delay={delay}>
+      <div className="flex items-center gap-3 mb-3">
         <span className="text-2xl">{icon}</span>
-        <span>{title}</span>
+        <CardTitle>{title}</CardTitle>
       </div>
-      <p className="text-sm text-foreground/70 leading-relaxed">{desc}</p>
-    </motion.div>
+      <CardContent>{desc}</CardContent>
+    </Card>
   );
 } 

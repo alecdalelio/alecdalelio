@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Globe, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
@@ -20,31 +20,34 @@ interface Project {
 
 export default function WorkCard({ project }: { project: Project }) {
   const [expanded, setExpanded] = useState(false);
+  const [tagsExpanded, setTagsExpanded] = useState(false);
   const visibleResults = expanded ? project.results : project.results?.slice(0, 2);
   const hasMoreResults = project.results && project.results.length > 2;
+  const hasMoreTags = project.tags.length > 4;
+  const visibleTags = tagsExpanded ? project.tags : project.tags.slice(0, 4);
 
   return (
-    <Card className="shadow-none bg-transparent border-none p-0">
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between">
-          <div className="flex-1 min-w-0">
-            <CardTitle className="text-lg md:text-xl mb-1">
-              {project.title}
-            </CardTitle>
-            <div className="flex items-center space-x-2 text-sm text-foreground/70">
-              <span className="capitalize">{project.category}</span>
-              <span>•</span>
-              <span className="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs">
-                {project.featured ? 'Featured' : 'Project'}
-              </span>
-            </div>
+    <Card className="shadow-none bg-transparent border-none">
+      <CardContent className="p-6 space-y-4">
+        {/* Title and metadata row */}
+        <div className="space-y-2">
+          <h3 className="text-lg md:text-xl font-semibold text-foreground">
+            {project.title}
+          </h3>
+          <div className="flex items-center space-x-2 text-sm text-foreground/70">
+            <span className="capitalize">{project.category}</span>
+            <span>•</span>
+            <span className="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs">
+              {project.featured ? 'Featured' : 'Project'}
+            </span>
           </div>
         </div>
-      </CardHeader>
-      <CardContent className="space-y-4">
+
+        {/* Description */}
         <p className="text-foreground/70 leading-relaxed text-sm md:text-base">
           {project.description}
         </p>
+
         {/* Results Section - Expandable */}
         {project.results && (
           <div className="space-y-2">
@@ -92,26 +95,59 @@ export default function WorkCard({ project }: { project: Project }) {
             </div>
           </div>
         )}
-        {/* Tags - Compact display */}
-        <div className="flex flex-wrap gap-1 pt-2">
-          {project.tags.slice(0, 4).map((tag) => (
-            <motion.span
-              key={tag}
-              className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full cursor-pointer"
-              whileHover={{ scale: 1.08, boxShadow: "0 0 0 2px #a1a1aa33" }}
-              transition={{ type: "spring", stiffness: 300 }}
+
+        {/* Tags - Expandable display */}
+        <div className="flex flex-wrap gap-1">
+          <AnimatePresence initial={false}>
+            {visibleTags.map((tag, index) => (
+              <motion.span
+                key={tag}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2, delay: index * 0.05 }}
+                className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full cursor-pointer"
+                whileHover={{ scale: 1.08, boxShadow: "0 0 0 2px #a1a1aa33" }}
+              >
+                {tag}
+              </motion.span>
+            ))}
+          </AnimatePresence>
+          
+          {hasMoreTags && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+              className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-full cursor-pointer hover:bg-secondary/80 transition-colors duration-200"
+              onClick={() => setTagsExpanded((prev) => !prev)}
+              role="button"
+              aria-label={tagsExpanded ? "Collapse tags" : `Show ${project.tags.length - 4} more tags`}
             >
-              {tag}
-            </motion.span>
-          ))}
-          {project.tags.length > 4 && (
-            <span className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-full">
-              +{project.tags.length - 4}
-            </span>
+              {tagsExpanded ? (
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Show less
+                </motion.span>
+              ) : (
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  +{project.tags.length - 4}
+                </motion.span>
+              )}
+            </motion.button>
           )}
         </div>
-        {/* Action buttons */}
-        <div className="flex gap-2 pt-2">
+
+        {/* Action buttons - centered with text content */}
+        <div className="flex justify-start">
           {project.links.live ? (
             <Button size="sm" variant="outline" asChild>
               <a

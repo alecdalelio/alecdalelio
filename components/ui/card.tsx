@@ -1,17 +1,40 @@
 import * as React from "react"
+import { motion } from "framer-motion"
+import { ReactNode } from "react"
 
 import { cn } from "@/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+interface CardProps {
+  children: ReactNode;
+  className?: string;
+  hover?: boolean;
+  delay?: number;
+  onClick?: () => void;
+}
+
+export function Card({ 
+  children, 
+  className = "", 
+  hover = true, 
+  delay = 0,
+  onClick 
+}: CardProps) {
+  const baseClasses = "p-6 rounded-xl border border-border bg-muted/30 transition-all duration-300"
+  const hoverClasses = hover ? "hover:bg-muted/50 hover:shadow-lg" : ""
+  
+  const MotionComponent = motion.div
+  
   return (
-    <div
-      data-slot="card"
-      className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
-        className
-      )}
-      {...props}
-    />
+    <MotionComponent
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay }}
+      whileHover={hover ? { scale: 1.02, y: -4 } : undefined}
+      className={`${baseClasses} ${hoverClasses} ${className}`}
+      onClick={onClick}
+    >
+      {children}
+    </MotionComponent>
   )
 }
 
@@ -28,13 +51,16 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+interface CardTitleProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardTitle({ children, className = "" }: CardTitleProps) {
   return (
-    <div
-      data-slot="card-title"
-      className={cn("leading-none font-semibold", className)}
-      {...props}
-    />
+    <h3 className={`text-lg font-medium text-foreground ${className}`}>
+      {children}
+    </h3>
   )
 }
 
@@ -61,13 +87,16 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+interface CardContentProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardContent({ children, className = "" }: CardContentProps) {
   return (
-    <div
-      data-slot="card-content"
-      className={cn("px-6", className)}
-      {...props}
-    />
+    <div className={`text-sm text-muted-foreground leading-relaxed ${className}`}>
+      {children}
+    </div>
   )
 }
 
@@ -82,11 +111,8 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 export {
-  Card,
   CardHeader,
   CardFooter,
-  CardTitle,
   CardAction,
   CardDescription,
-  CardContent,
 }
