@@ -41,7 +41,7 @@ export default function AboutPage() {
                 Now
               </h3>
               <p className="text-lg leading-relaxed text-foreground/80">
-                I'm focused on agentic workflows and context engineering — designing AI systems that reason, act, and collaborate inside real-world tools. At Attention, I've helped deploy dozens of production agents for sales, ops, and RevOps teams.
+                I'm focused on agentic workflows and context engineering — designing AI systems that reason, act, and collaborate inside real-world tools. At Attention, I've helped deploy dozens of production agents for Sales, Success and RevOps teams.
               </p>
             </motion.div>
             
