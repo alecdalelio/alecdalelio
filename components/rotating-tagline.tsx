@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const taglines = [
   "AI Agent Architect",
-  "Creative Systems Thinker",
-  "Automation Evangelist",
-  "Web3-Formed, AI-Forged",
-  "Curious Technologist",
+  "Systems Designer",
+  "Technical Storyteller",
+  "Prompt Engineer",
+  "Creative Coder",
 ];
 
 const RotatingTagline = () => {
@@ -17,24 +17,24 @@ const RotatingTagline = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % taglines.length);
-    }, 3000);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="h-10 flex items-center justify-center" aria-live="polite" aria-label="Professional titles">
+    <div className="h-12 flex items-center justify-center" aria-live="polite" aria-label="Professional titles">
       <AnimatePresence mode="wait">
         <motion.span
           key={currentIndex}
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -15 }}
+          initial={{ opacity: 0, y: 20, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20, scale: 0.9 }}
           transition={{ 
-            duration: 0.6,
+            duration: 0.8,
             ease: "easeInOut"
           }}
-          className="text-xl md:text-2xl font-medium text-primary/90 dark:text-primary/80"
+          className="text-2xl md:text-3xl font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
         >
           {taglines[currentIndex]}
         </motion.span>

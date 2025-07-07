@@ -2,77 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Linkedin, 
-  Github, 
-  Mail, 
-  Globe,
-  Code,
-  Coffee,
-  BookOpen,
-  Users,
-  Brain,
-  Zap,
-  Lightbulb,
-  Share2
-} from "lucide-react";
+import { Linkedin, Github, Mail } from "lucide-react";
 
-export default function About() {
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/alec-d-alelio-72230b81/",
-      icon: Linkedin,
-      color: "hover:text-blue-600"
-    },
-    {
-      name: "GitHub",
-      url: "https://github.com/alecdalelio",
-      icon: Github,
-      color: "hover:text-gray-800 dark:hover:text-gray-200"
-    },
-    {
-      name: "Email",
-      url: "mailto:alecdalelio@gmail.com",
-      icon: Mail,
-      color: "hover:text-red-600"
-    }
-  ];
-
-  const interests = [
-    {
-      icon: Users,
-      title: "Technical Account Management",
-      description: "Guiding partners from idea to launch, aligning technical implementation with product strategy"
-    },
-    {
-      icon: Zap,
-      title: "Agentic Workflows",
-      description: "Designing practical AI agents that reason, act, and integrate into real-world tools and teams"
-    },
-    {
-      icon: Brain,
-      title: "Creative Systems Thinking",
-      description: "Building frameworks that balance automation, human context, and elegant logic"
-    },
-    {
-      icon: Coffee,
-      title: "Rapid Experimentation",
-      description: "Prototyping with new technologies to explore what's possible — before it's obvious"
-    },
-    {
-      icon: Lightbulb,
-      title: "Toolmaking for Thinkers",
-      description: "Creating interfaces and automations that amplify insight, creativity, and decision-making"
-    },
-    {
-      icon: Share2,
-      title: "Community & Collaboration",
-      description: "Sharing ideas, contributing to early-stage projects, and building in public"
-    }
-  ];
-
+export default function AboutPage() {
   return (
     <div className="min-h-screen py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,8 +18,8 @@ export default function About() {
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             About Me
           </h1>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            Exploring the technologies shaping our future — currently focused on agentic workflows and multi-component prompting.
+          <p className="text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+            Exploring the technologies shaping our future — currently focused on agentic workflows and context engineering.
           </p>
         </motion.div>
 
@@ -96,65 +28,101 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-16"
+          className="mb-20"
         >
-          <Card>
-            <CardContent className="p-8">
-              <div className="prose prose-lg max-w-none">
-                <p className="text-foreground/80 leading-relaxed mb-6">
-                  Hi! I'm Alec D'Alelio — a builder and systems thinker exploring the technologies shaping how we live, work, and create.
-                </p>
-                <p className="text-foreground/80 leading-relaxed mb-6">
-                  Right now, I'm deep-diving into agentic workflows and model context protocol (MCP), designing AI systems that can reason, act, and collaborate in increasingly complex ways. At Attention, I've helped ship dozens of production AI agents for real-world sales and success teams.
-                </p>
-                <p className="text-foreground/80 leading-relaxed mb-6">
-                  Previously, I worked at the intersection of creative code and crypto, launching generative art projects and guiding web3 partners at Art Blocks Engine. That experience sharpened my love for emergent systems — and how small decisions in code, design, or incentives can ripple into massive outcomes.
-                </p>
-                <p className="text-foreground/80 leading-relaxed">
-                  This site is a place to document what I'm learning, share personal experiments, and connect with others building toward the future of intelligent systems.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+          <section className="max-w-prose mx-auto space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="space-y-3"
+            >
+              <h3 className="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
+                Now
+              </h3>
+              <p className="text-lg leading-relaxed text-foreground/80">
+                I'm focused on agentic workflows and context engineering — designing AI systems that reason, act, and collaborate inside real-world tools. At Attention, I've helped deploy dozens of production agents for sales, ops, and RevOps teams.
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="space-y-3"
+            >
+              <h3 className="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
+                Before
+              </h3>
+              <p className="text-lg leading-relaxed text-foreground/80">
+                I worked at the edge of creative tech and crypto, launching generative art systems and guiding web3 infrastructure projects at Art Blocks Engine. That work sharpened my ability to bridge creative vision with technical execution — ensuring complex, on-chain projects shipped reliably and at scale.
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="space-y-3"
+            >
+              <h3 className="text-muted-foreground text-sm font-semibold uppercase tracking-wide">
+                This Site
+              </h3>
+              <p className="text-lg leading-relaxed text-foreground/80">
+                This is where I share what I'm building, learning, and thinking about — and connect with others working toward the future of intelligent tools.
+              </p>
+            </motion.div>
+          </section>
         </motion.div>
 
-        {/* Interests Grid */}
+        {/* Focus Stack */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-16"
+          className="mb-20"
         >
-          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-            What I Do
+          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">
+            Focus Stack
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {interests.map((interest, index) => (
-              <motion.div
-                key={interest.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
-              >
-                <Card className="h-full">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="p-2 bg-primary/10 rounded-lg">
-                        <interest.icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">
-                          {interest.title}
-                        </h3>
-                        <p className="text-foreground/70 text-sm">
-                          {interest.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <FocusCard 
+              title="Agentic Workflows" 
+              icon="🤖" 
+              desc="Designing AI agents that reason, act, and integrate into real-world tools." 
+              delay={0.5}
+            />
+            <FocusCard 
+              title="Rapid Prototyping" 
+              icon="⚡" 
+              desc="Exploring what's possible with new tech — before it's obvious." 
+              delay={0.6}
+            />
+            <FocusCard 
+              title="Toolmaking" 
+              icon="🧰" 
+              desc="Creating interfaces and automations that amplify insight and decision-making." 
+              delay={0.7}
+            />
+            <FocusCard 
+              title="Technical Account Mgmt" 
+              icon="🤝" 
+              desc="Guiding partners from idea to launch, aligning technical implementation with product strategy." 
+              delay={0.8}
+            />
+            <FocusCard 
+              title="Creative Systems Thinking" 
+              icon="🧠" 
+              desc="Building frameworks that balance automation, context, and elegance." 
+              delay={0.9}
+            />
+            <FocusCard 
+              title="Community & Collaboration" 
+              icon="🌐" 
+              desc="Sharing ideas, contributing to early-stage projects, and building in public." 
+              delay={1.0}
+            />
           </div>
         </motion.div>
 
@@ -168,29 +136,61 @@ export default function About() {
           <h2 className="text-3xl font-bold text-foreground mb-8">
             Let's Connect
           </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {socialLinks.map((link) => (
-              <Button
-                key={link.name}
-                variant="outline"
-                size="lg"
-                asChild
-                className="group"
-              >
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2"
-                >
-                  <link.icon className={`h-5 w-5 transition-colors ${link.color}`} />
-                  <span>{link.name}</span>
+          <p className="text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
+            Always open to connecting with builders, designers, and thinkers working on the future of intelligent tools.
+          </p>
+          <div className="flex justify-center gap-4 flex-wrap">
+            <motion.div
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Button variant="outline" size="lg" asChild>
+                <a href="https://linkedin.com/in/alec-d-alelio-72230b81/" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="w-4 h-4 mr-2" /> LinkedIn
                 </a>
               </Button>
-            ))}
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Button variant="outline" size="lg" asChild>
+                <a href="mailto:alecdalelio@gmail.com">
+                  <Mail className="w-4 h-4 mr-2" /> Email
+                </a>
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Button variant="outline" size="lg" asChild>
+                <a href="https://github.com/alecdalelio" target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4 mr-2" /> GitHub
+                </a>
+              </Button>
+            </motion.div>
           </div>
         </motion.div>
       </div>
     </div>
+  );
+}
+
+function FocusCard({ title, desc, icon, delay }: { title: string; desc: string; icon: string; delay: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="p-6 rounded-xl border border-border bg-muted/30 hover:bg-muted/50 hover:shadow-lg transition-all duration-300"
+    >
+      <div className="text-lg font-semibold flex items-center gap-3 mb-3 text-foreground">
+        <span className="text-2xl">{icon}</span>
+        <span>{title}</span>
+      </div>
+      <p className="text-sm text-foreground/70 leading-relaxed">{desc}</p>
+    </motion.div>
   );
 } 

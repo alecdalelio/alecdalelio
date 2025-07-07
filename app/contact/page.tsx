@@ -64,19 +64,13 @@ export default function Contact() {
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
-                          <Button 
-                            asChild 
-                            size="lg" 
-                            className="w-full group"
+                          <a 
+                            href="mailto:alecdalelio@gmail.com?subject=Let's%20Collaborate"
+                            className="flex items-center justify-center w-full px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md font-medium transition-colors duration-200 group"
                           >
-                            <a 
-                              href="mailto:alecdalelio@gmail.com?subject=Let's Collaborate"
-                              className="flex items-center justify-center"
-                            >
-                              <Send className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform duration-200" />
-                              Send Email
-                            </a>
-                          </Button>
+                            <Send className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform duration-200" />
+                            Send Email
+                          </a>
                         </motion.div>
                         
                         <div className="space-y-3 text-sm border-t pt-4">
@@ -110,26 +104,7 @@ export default function Contact() {
                 </Card>
               </motion.div>
 
-              {/* Now Accepting Block */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="p-4 rounded-lg bg-muted/50 border border-border/50"
-              >
-                <div className="space-y-2">
-                  <p className="text-sm font-medium text-foreground/80 flex items-center">
-                    <span className="mr-2">✨</span>
-                    Now connecting with folks building:
-                  </p>
-                  <ul className="text-xs text-foreground/60 space-y-1 ml-6">
-                    <li>• agentic infrastructure</li>
-                    <li>• creative AI tools</li>
-                    <li>• thoughtful automation</li>
-                    <li>• weird experiments that might just work</li>
-                  </ul>
-                </div>
-              </motion.div>
+
 
               {/* Latest Build Card */}
               <motion.div

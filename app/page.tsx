@@ -5,6 +5,9 @@ import { ChevronDown, Clock, Brain, Zap, Palette, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import RotatingTagline from "@/components/rotating-tagline";
+import FloatingContextBlocks from "@/components/floating-context-blocks";
+import ParticleNetwork from "@/components/particle-network";
+import HeroCTA from "@/components/hero-cta";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -12,10 +15,8 @@ export default function Home() {
 
   const taglines = [
     "Designing intelligent systems at the edge of code, creativity, and curiosity.",
-    "Exploring the future through AI agents, automation, and creative tech.",
-    "Building tools that think, adapt, and evolve — just like the people who use them.",
-    "Prototyping what's next in agentic workflows, creative systems, and automation.",
-    "Building expressive tools for the future of intelligence."
+    "Helping AI agents learn how to think — not just reply.",
+    "Deploying agents, building tools, and asking better questions."
   ];
 
   useEffect(() => {
@@ -31,14 +32,14 @@ export default function Home() {
     {
       icon: Brain,
       title: "Agent Design",
-      description: "Currently experimenting with multi-step agent flows, memory graphs, and multi-component prompting (MCP) techniques.",
+      description: "Currently experimenting with agentic workflows, multi-agent orchestration, and model context protocol (MCP)",
       status: "Deep Dive",
       statusColor: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
     },
     {
       icon: Zap,
       title: "Systems Prototyping",
-      description: "Using tools like n8n, Cursor, and Pika to build agent orchestration, self-healing workflows, and creative automation stacks.",
+      description: "Using tools like Attention, Zapier and n8n to build agent orchestration, self-healing workflows, and creative automation stacks.",
       status: "Actively Shipping",
       statusColor: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
     },
@@ -61,57 +62,85 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative">
-        <div className="text-center space-y-8 px-4 sm:px-6 lg:px-8">
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* Animated Background */}
+        <FloatingContextBlocks />
+        <ParticleNetwork />
+        
+        <div className="text-center space-y-8 px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-4"
+            className="space-y-6"
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground">
+            {/* Name with enhanced styling */}
+            <motion.h1 
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
               Alec D'Alelio
-            </h1>
-            <RotatingTagline />
+            </motion.h1>
+            
+            {/* Rotating subtitle with enhanced animation */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <RotatingTagline />
+            </motion.div>
+            
+            {/* Dynamic tagline with typewriter effect */}
             {randomTagline && (
               <motion.p 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto"
+                className="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto font-medium leading-relaxed"
               >
                 {randomTagline}
               </motion.p>
             )}
+            
+            {/* Supporting copy with enhanced styling */}
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto"
+            >
+              I build AI agents that 80+ companies rely on to think faster, sell smarter, and report better.
+            </motion.p>
+            
+            {/* Tertiary line with subtle animation */}
+            <motion.p 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="text-sm md:text-base text-foreground/60 max-w-2xl mx-auto font-medium"
+            >
+              → Previously at Art Blocks • Now at Attention
+            </motion.p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Button
-              size="lg"
-              onClick={scrollToAbout}
-              className="group"
-            >
-              Learn More
-              <ChevronDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform duration-200" />
-            </Button>
-          </motion.div>
+          {/* New CTA Component */}
+          <HeroCTA onScrollToAbout={scrollToAbout} />
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Enhanced Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center"
+            className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center backdrop-blur-sm bg-background/20"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
@@ -136,7 +165,7 @@ export default function Home() {
               About Me
             </h2>
             <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
-              I'm an engineer and systems thinker exploring how emerging technologies — from AI agents to multi-component prompting — are reshaping how we work, learn, and create. I've helped scale generative art on-chain, deployed AI into live sales teams, and now I'm building tools and experiments at the edge of automation and intelligence.
+            I’m a builder and systems thinker working at the edge of automation, intelligence, and creative technology. From deploying AI agents into sales teams to launching generative art on-chain, I’ve led projects that connect emerging tech with real-world impact. Right now, I’m deep in the world of prompt-chaining, agent orchestration, and experimental interfaces for the next wave of human-computer collaboration.
             </p>
             <Button variant="outline" asChild>
               <a href="/about">Read More</a>
