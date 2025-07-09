@@ -45,7 +45,7 @@ export default function ProjectFilters() {
           className={`cursor-pointer transition-all duration-200 ${
             isActive 
               ? "bg-primary text-primary-foreground hover:bg-primary/90" 
-              : "hover:bg-primary/10 hover:text-primary"
+              : "hover:bg-primary/10 hover:text-primary border-zinc-300 dark:border-zinc-600"
           }`}
           onClick={() => handleFilterToggle(type, value)}
         >
@@ -59,8 +59,8 @@ export default function ProjectFilters() {
   };
 
   const FilterSection = ({ title, type, values }: { title: string; type: FilterType; values: string[] }) => (
-    <div className="space-y-2">
-      <h3 className="text-sm font-medium text-foreground/70">{title}</h3>
+            <div className="space-y-2">
+          <h3 className="text-sm font-medium text-foreground/70 dark:text-foreground/70 text-zinc-700 dark:text-foreground/70">{title}</h3>
       <div className="flex flex-wrap gap-2">
         <AnimatePresence>
           {values.map((value) => (
@@ -193,7 +193,7 @@ export default function ProjectFilters() {
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-wrap gap-2"
         >
-          <span className="text-sm text-foreground/70">Active filters:</span>
+          <span className="text-sm text-foreground/70 dark:text-foreground/70 text-zinc-700 dark:text-foreground/70">Active filters:</span>
           {filters.tags.map(tag => (
             <Badge key={`tag-${tag}`} variant="secondary" className="text-xs">
               {tag}

@@ -26,7 +26,7 @@ interface Project {
 function WorkSection({ id, icon, title, description, children }: { id: string; icon: React.ReactNode; title: string; description: string; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-32">
-      <header className="sticky top-24 z-10 bg-background/80 backdrop-blur border-b border-zinc-800 mb-8">
+      <header className="sticky top-24 z-10 bg-background/80 backdrop-blur border-b border-zinc-800 dark:border-zinc-800 border-zinc-200 dark:border-zinc-800 mb-8">
         <div className="flex items-center space-x-3 py-4">
           <div className="p-3 bg-primary/10 rounded-lg">{icon}</div>
           <div>
@@ -68,7 +68,7 @@ function ProjectsContent() {
       tags: ["Account Management", "Creative Coding", "Smart Contracts", "Partner Relations", "Technical Documentation", "GTM"],
       links: {
         live: "https://artblocks.io",
-        github: null
+        github: "https://github.com/ArtBlocks"
       },
       featured: false,
       results: [
@@ -281,16 +281,18 @@ function ProjectsContent() {
               >
                 <div className="space-y-8">
                   {section.projects.map((project, idx) => (
-                    <motion.div
-                      key={project.title}
-                      initial={{ opacity: 0, y: 32 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                      transition={{ duration: 0.6, delay: idx * 0.08 }}
-                      className={`relative rounded-xl transition-shadow duration-300 ${
-                        idx % 2 === 0 ? "bg-zinc-900" : "bg-zinc-800"
-                      } ${idx !== 0 ? "border-t border-zinc-700" : ""} p-6 md:p-8`}
-                    >
+                                    <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: idx * 0.08 }}
+                  className={`relative rounded-xl transition-all duration-300 hover:shadow-lg transition-colors duration-150 ${
+                    idx % 2 === 0 
+                      ? "bg-white dark:bg-zinc-900" 
+                      : "bg-zinc-50 dark:bg-zinc-800"
+                  } ${idx !== 0 ? "border-t border-zinc-200 dark:border-zinc-700" : ""} p-6 md:p-8 shadow-md dark:shadow-none border border-zinc-200 dark:border-transparent`}
+                >
                       <WorkCard project={project} />
                     </motion.div>
                   ))}

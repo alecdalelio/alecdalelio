@@ -34,7 +34,7 @@ export default function StickyCategoryNav({ sections }: StickyCategoryNavProps) 
   };
 
   return (
-    <nav className="sticky top-20 z-20 bg-background/80 backdrop-blur border-b border-zinc-800">
+    <nav className="sticky top-20 z-20 bg-background/80 backdrop-blur border-b border-zinc-800 dark:border-zinc-800 border-zinc-200 dark:border-zinc-800">
       <ul className="flex justify-center gap-4 md:gap-8 py-2">
         {sections.map((section) => (
           <li key={section.id}>
