@@ -1,7 +1,10 @@
+"use client";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Globe, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import DataBloomEffect from "./data-bloom-effect";
 
 interface Project {
   title: string;
@@ -15,6 +18,7 @@ interface Project {
   results?: string[];
   icon: any;
   category: 'fulltime' | 'contract' | 'personal';
+  dates: string;
 }
 
 export default function WorkCard({ project }: { project: Project }) {
@@ -26,30 +30,33 @@ export default function WorkCard({ project }: { project: Project }) {
   const visibleTags = tagsExpanded ? project.tags : project.tags.slice(0, 4);
 
   return (
-    <div className="space-y-4">
+    <DataBloomEffect>
+      <div className="space-y-4">
         {/* Title and metadata row */}
         <div className="space-y-2">
-          <h3 className="text-lg md:text-xl font-semibold text-foreground dark:text-foreground text-zinc-900 dark:text-foreground">
+          <h3 className="text-lg md:text-xl font-semibold text-foreground">
             {project.title}
           </h3>
-          <div className="flex items-center space-x-2 text-sm text-foreground/70 dark:text-foreground/70 text-zinc-700 dark:text-foreground/70">
+          <div className="flex items-center space-x-2 text-sm text-foreground/70">
             <span className="capitalize">{project.category}</span>
             <span>•</span>
             <span className="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs">
               {project.featured ? 'Featured' : 'Project'}
             </span>
+            <span>•</span>
+            <span>{project.dates}</span>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-foreground/70 dark:text-foreground/70 text-zinc-700 dark:text-foreground/70 leading-relaxed text-sm md:text-base">
+        <p className="text-foreground/70 leading-relaxed text-sm md:text-base">
           {project.description}
         </p>
 
         {/* Results Section - Expandable */}
         {project.results && (
           <div className="space-y-2">
-            <h4 className="font-semibold text-foreground dark:text-foreground text-zinc-900 dark:text-foreground flex items-center space-x-2 text-sm">
+            <h4 className="font-semibold text-foreground flex items-center space-x-2 text-sm">
               <TrendingUp className="h-4 w-4" />
               <span>Key Results</span>
             </h4>
@@ -62,7 +69,7 @@ export default function WorkCard({ project }: { project: Project }) {
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="text-xs md:text-sm text-foreground/70 dark:text-foreground/70 text-zinc-700 dark:text-foreground/70 flex items-start space-x-2 group"
+                    className="text-xs md:text-sm text-foreground/70 flex items-start space-x-2 group"
                     whileHover={{ scale: 1.03, boxShadow: "0 0 0 2px #a1a1aa33" }}
                   >
                     <span className="text-primary mt-1">•</span>
@@ -74,7 +81,7 @@ export default function WorkCard({ project }: { project: Project }) {
                 <motion.button
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex items-center space-x-1 text-xs text-foreground/50 dark:text-foreground/50 text-zinc-500 dark:text-foreground/50 hover:text-primary transition-colors duration-200 mt-2"
+                  className="flex items-center space-x-1 text-xs text-foreground/50 hover:text-primary transition-colors duration-200 mt-2"
                   onClick={() => setExpanded((prev) => !prev)}
                 >
                   {expanded ? (
@@ -156,7 +163,9 @@ export default function WorkCard({ project }: { project: Project }) {
               >
                 <Globe className="h-4 w-4" />
                 <span className="hidden sm:inline">
-                  {project.title.includes("Metamorphic") ? "View Case Study" : "Visit Site"}
+                  {project.title.includes("Metamorphic") ? "View Case Study" : 
+                   project.title.includes("Sofa King Fest") ? "View Article" :
+                   project.title.includes("Launch Pad") ? "View Coverage" : "Visit Site"}
                 </span>
                 <span className="sm:hidden">View</span>
               </a>
@@ -168,6 +177,7 @@ export default function WorkCard({ project }: { project: Project }) {
             </Button>
           )}
         </div>
-    </div>
+      </div>
+    </DataBloomEffect>
   );
 } 

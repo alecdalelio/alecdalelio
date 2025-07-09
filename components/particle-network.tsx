@@ -1,44 +1,46 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Particle {
-  id: number;
   x: number;
   y: number;
   size: number;
   opacity: number;
   delay: number;
+  animX: number;
+  animY: number;
+  duration: number;
 }
 
-const ParticleNetwork = () => {
+export default function ParticleNetwork() {
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    const generateParticles = () => {
-      const newParticles: Particle[] = [];
-      for (let i = 0; i < 15; i++) {
-        newParticles.push({
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.3 + 0.1,
-          delay: Math.random() * 2,
-        });
-      }
-      setParticles(newParticles);
-    };
-
-    generateParticles();
+    // Generate random particles only on client-side
+    const generatedParticles = Array.from({ length: 15 }).map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      opacity: Math.random() * 0.3 + 0.1,
+      delay: Math.random() * 2,
+      animX: Math.random() * 20 - 10,
+      animY: Math.random() * 20 - 10,
+      duration: 4 + Math.random() * 2,
+    }));
+    setParticles(generatedParticles);
   }, []);
 
+  if (particles.length === 0) {
+    return null; // Don't render until particles are generated
+  }
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((particle) => (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {particles.map((particle, index) => (
         <motion.div
-          key={particle.id}
+          key={index}
           className="absolute bg-primary/20 rounded-full"
           style={{
             left: `${particle.x}%`,
@@ -48,12 +50,13 @@ const ParticleNetwork = () => {
             opacity: particle.opacity,
           }}
           animate={{
-            y: [0, -30, 0],
-            x: [0, Math.random() * 20 - 10, 0],
-            opacity: [particle.opacity, particle.opacity * 0.5, particle.opacity],
+            x: [0, particle.animX, 0],
+            y: [0, particle.animY, 0],
+            scale: [1, 1.5, 1],
+            opacity: [particle.opacity, particle.opacity * 2, particle.opacity],
           }}
           transition={{
-            duration: 4 + Math.random() * 2,
+            duration: particle.duration,
             delay: particle.delay,
             repeat: Infinity,
             ease: "easeInOut",
@@ -62,6 +65,4 @@ const ParticleNetwork = () => {
       ))}
     </div>
   );
-};
-
-export default ParticleNetwork; 
+} 

@@ -7,16 +7,19 @@ import { useTheme } from "@/contexts/theme-context";
 // Dynamically import p5 only on the client side
 const BackgroundSketch = () => {
   const [isClient, setIsClient] = useState(false);
+  const [noiseSeed, setNoiseSeed] = useState<number>(0);
   const canvasRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<any>(null);
   const { theme, mounted } = useTheme();
 
   useEffect(() => {
     setIsClient(true);
+    // Generate random seed only on client-side
+    setNoiseSeed(Math.floor(Math.random() * 1000));
   }, []);
 
   useEffect(() => {
-    if (!isClient || !canvasRef.current || p5InstanceRef.current || !mounted) return;
+    if (!isClient || !canvasRef.current || p5InstanceRef.current || !mounted || noiseSeed === 0) return;
 
     // Dynamically import p5 only when component mounts on client
     const loadP5 = async () => {
@@ -26,8 +29,7 @@ const BackgroundSketch = () => {
         let time = 0;
         let breathingTime = 0;
         
-        // Generate random seed for variation on each load
-        const noiseSeed = Math.floor(Math.random() * 1000);
+        // Use the pre-generated noise seed
         p.noiseSeed(noiseSeed);
         
         // Line configuration with organic variations
@@ -262,7 +264,7 @@ const BackgroundSketch = () => {
         p5InstanceRef.current = null;
       }
     };
-  }, [isClient, theme, mounted]);
+  }, [isClient, theme, mounted, noiseSeed]);
 
   return (
     <div 

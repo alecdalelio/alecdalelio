@@ -1,31 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, Clock, Brain, Zap, Palette, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import RotatingTagline from "@/components/rotating-tagline";
+import { Brain, Zap, Palette, Code, Clock } from "lucide-react";
 import FloatingContextBlocks from "@/components/floating-context-blocks";
 import ParticleNetwork from "@/components/particle-network";
+import ProceduralBackground from "@/components/procedural-background";
+import RotatingTagline from "@/components/rotating-tagline";
 import HeroCTA from "@/components/hero-cta";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [randomTagline, setRandomTagline] = useState<string>("");
-
+  const [isClient, setIsClient] = useState(false);
+  
   const taglines = [
-    "Designing intelligent systems at the edge of code, creativity, and curiosity.",
-    "Helping AI agents learn how to think — not just reply.",
+    "Building AI agents that think, act, and collaborate.",
+    "From generative art to agentic workflows.",
     "Deploying agents, building tools, and asking better questions."
   ];
 
   useEffect(() => {
+    setIsClient(true);
     const randomIndex = Math.floor(Math.random() * taglines.length);
     setRandomTagline(taglines[randomIndex]);
   }, []);
 
   const scrollToAbout = () => {
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+    if (isClient) {
+      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const currentActivities = [
@@ -58,6 +63,7 @@ export default function Home() {
         {/* Animated Background */}
         <FloatingContextBlocks />
         <ParticleNetwork />
+        <ProceduralBackground />
         
         <div className="text-center space-y-8 px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -118,7 +124,7 @@ export default function Home() {
             </motion.p>
           </motion.div>
 
-          {/* New CTA Component */}
+          {/* About / Work / Contact pill-style buttons */}
           <HeroCTA onScrollToAbout={scrollToAbout} />
         </div>
 
@@ -144,7 +150,7 @@ export default function Home() {
       </section>
 
       {/* About Preview Section */}
-      <section id="about" className="py-20 bg-muted/30">
+      <section id="about" className="py-20 bg-zinc-50 dark:bg-zinc-900/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +163,7 @@ export default function Home() {
               About Me
             </h2>
             <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
-            I’m a builder and systems thinker working at the edge of automation, intelligence, and creative technology. From deploying AI agents into sales teams to launching generative art on-chain, I’ve led projects that connect emerging tech with real-world impact. Right now, I’m deep in the world of prompt-chaining, agent orchestration, and experimental interfaces for the next wave of human-computer collaboration.
+            I'm a builder and systems thinker working at the edge of automation, intelligence, and creative technology. From deploying AI agents into sales teams to launching generative art on-chain, I've led projects that connect emerging tech with real-world impact. Right now, I'm deep in the world of prompt-chaining, agent orchestration, and experimental interfaces for the next wave of human-computer collaboration.
             </p>
             <Button variant="outline" asChild>
               <a href="/about">Read More</a>

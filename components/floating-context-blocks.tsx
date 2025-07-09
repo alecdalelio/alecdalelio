@@ -1,45 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Block {
-  id: number;
   x: number;
   y: number;
   size: number;
   delay: number;
   duration: number;
+  animX: number;
+  animY: number;
 }
 
-const FloatingContextBlocks = () => {
+export default function FloatingContextBlocks() {
   const [blocks, setBlocks] = useState<Block[]>([]);
 
   useEffect(() => {
-    const generateBlocks = () => {
-      const newBlocks: Block[] = [];
-      for (let i = 0; i < 8; i++) {
-        newBlocks.push({
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 20 + 10,
-          delay: Math.random() * 2,
-          duration: Math.random() * 3 + 2,
-        });
-      }
-      setBlocks(newBlocks);
-    };
-
-    generateBlocks();
+    // Generate random blocks only on client-side
+    const generatedBlocks = Array.from({ length: 8 }).map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 20 + 10,
+      delay: Math.random() * 2,
+      duration: Math.random() * 3 + 2,
+      animX: Math.random() * 10 - 5,
+      animY: Math.random() * 10 - 5,
+    }));
+    setBlocks(generatedBlocks);
   }, []);
 
+  if (blocks.length === 0) {
+    return null; // Don't render until blocks are generated
+  }
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {blocks.map((block) => (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {blocks.map((block, index) => (
         <motion.div
-          key={block.id}
-          className="absolute bg-primary/10 border border-primary/20 rounded-lg"
+          key={index}
+          className="absolute w-2 h-2 bg-primary/20 rounded-full"
           style={{
             left: `${block.x}%`,
             top: `${block.y}%`,
@@ -47,10 +47,10 @@ const FloatingContextBlocks = () => {
             height: `${block.size}px`,
           }}
           animate={{
-            y: [0, -20, 0],
-            x: [0, Math.random() * 10 - 5, 0],
-            rotate: [0, 180, 360],
-            scale: [1, 1.1, 1],
+            x: [0, block.animX, 0],
+            y: [0, block.animY, 0],
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
             duration: block.duration,
@@ -62,6 +62,4 @@ const FloatingContextBlocks = () => {
       ))}
     </div>
   );
-};
-
-export default FloatingContextBlocks; 
+} 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import LottieFooter from "./lottie-footer";
 
 const Footer = () => {
   return (
@@ -11,6 +12,9 @@ const Footer = () => {
       transition={{ delay: 0.5 }}
       className="border-t border-border bg-background/50 backdrop-blur-sm"
     >
+      {/* Lottie Animation */}
+      <LottieFooter />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center">
           <p className="text-foreground/70 text-sm">

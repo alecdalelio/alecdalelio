@@ -2,15 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 interface HeroCTAProps {
   onScrollToAbout: () => void;
 }
 
-const HeroCTA = ({ onScrollToAbout }: HeroCTAProps) => {
-  const [activeTab, setActiveTab] = useState("work");
+export default function HeroCTA({ onScrollToAbout }: HeroCTAProps) {
+  const [activeTab, setActiveTab] = useState("about");
 
   const tabs = [
     { id: "about", label: "About", action: () => window.open("/about", "_self") },
@@ -19,31 +18,25 @@ const HeroCTA = ({ onScrollToAbout }: HeroCTAProps) => {
   ];
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      {/* Tab Navigation */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="flex space-x-1 bg-muted/50 rounded-lg p-1"
-      >
+    <div className="flex justify-center">
+      <div className="flex space-x-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg p-1">
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={tab.action}
+            onClick={() => {
+              setActiveTab(tab.id);
+              tab.action();
+            }}
             className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
               activeTab === tab.id
-                ? "bg-background text-foreground shadow-sm"
-                : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                ? "bg-white dark:bg-zinc-700 text-foreground shadow-sm"
+                : "text-foreground/70 hover:text-foreground"
             }`}
-            onMouseEnter={() => setActiveTab(tab.id)}
           >
             {tab.label}
           </button>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
-};
-
-export default HeroCTA; 
+} 

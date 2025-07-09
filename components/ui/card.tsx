@@ -19,8 +19,8 @@ export function Card({
   delay = 0,
   onClick 
 }: CardProps) {
-  const baseClasses = "p-6 rounded-xl border border-border bg-muted/30 transition-all duration-300"
-  const hoverClasses = hover ? "hover:bg-muted/50 hover:shadow-lg" : ""
+  const baseClasses = "p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-all duration-300"
+  const hoverClasses = hover ? "hover:bg-zinc-50 dark:hover:bg-zinc-800/50 hover:shadow-lg" : ""
   
   const MotionComponent = motion.div
   

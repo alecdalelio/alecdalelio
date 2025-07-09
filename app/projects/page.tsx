@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Compass, FileText, Palette as PaletteIcon, Bot, Palette, Users, MessageSquare, DollarSign, Music, Code } from "lucide-react";
+import { Compass, FileText, Palette as PaletteIcon, Bot, Palette, Users, MessageSquare, DollarSign, Music, Code, Building2 } from "lucide-react";
 import ProjectFilters from "@/components/project-filters";
 import ProjectTimeline from "@/components/project-timeline";
 import { useProjectFilters } from "@/contexts/project-filter-context";
@@ -21,6 +21,7 @@ interface Project {
   results?: string[];
   icon: any;
   category: 'fulltime' | 'contract' | 'personal';
+  dates: string;
 }
 
 function WorkSection({ id, icon, title, description, children }: { id: string; icon: React.ReactNode; title: string; description: string; children: React.ReactNode }) {
@@ -60,7 +61,8 @@ function ProjectsContent() {
         "Briefing bots reducing meeting prep time by 50%"
       ],
       icon: Bot,
-      category: 'fulltime'
+      category: 'fulltime',
+      dates: "February 2025 - Present"
     },
     {
       title: "Art Blocks Engine - Generative Art Platform",
@@ -78,7 +80,8 @@ function ProjectsContent() {
         "Accelerated contract renewals and informed roadmap enhancements across Engineering, Product, Legal"
       ],
       icon: Palette,
-      category: 'fulltime'
+      category: 'fulltime',
+      dates: "August 2023 - February 2025"
     },
     {
       title: "Mochi! – Tokenized Coordination for DAO Communities",
@@ -96,7 +99,27 @@ function ProjectsContent() {
         "Served as technical liaison between protocol developers, DAO operators, and community organizers"
       ],
       icon: Users,
-      category: 'fulltime'
+      category: 'fulltime',
+      dates: "February 2021 - December 2022"
+    },
+    {
+      title: "Launch Pad – National Coworking Network",
+      description: "Launch Pad is a network of coworking spaces across the U.S. focused on community-driven entrepreneurship. Backed by $1.3M in seed funding, Launch Pad expanded aggressively with a mission to support founders and close access gaps in underserved cities. As a Sales & Marketing Associate, I played a key role across five national locations.",
+      tags: ["Sales Ops", "Content Marketing", "Community Building", "CRM", "Events"],
+      links: {
+        live: "https://siliconbayounews.com/2019/02/14/coworking-space-launch-pad-raises-1-3-million-plans-25-locations-by-2020/",
+        github: null
+      },
+      featured: false,
+      results: [
+        "Led full-cycle B2B sales process for Memphis, Newark, and Stockton markets — from prospecting to contract",
+        "Produced monthly event series drawing 200+ attendees to drive top-of-funnel pipeline and deepen community ties",
+        "Managed all social media channels (IG, Twitter, LinkedIn) for five sites, improving engagement through localized content",
+        "Published 3+ blog posts per week to support SEO and founder storytelling"
+      ],
+      icon: Building2,
+      category: 'fulltime',
+      dates: "September 2019 - May 2020"
     },
     {
       title: "BONKbot – Solana Trading Bot Docs",
@@ -114,7 +137,8 @@ function ProjectsContent() {
         "Helped onboard thousands of users into Solana trading through accessible, well-structured docs"
       ],
       icon: MessageSquare,
-      category: 'contract'
+      category: 'contract',
+      dates: "September 2024 - January 2025"
     },
     {
       title: "Reveel – Web3 Payments Protocol",
@@ -133,7 +157,8 @@ function ProjectsContent() {
         "Collaborated with a team backed by Binance Labs and trusted by 100K+ users"
       ],
       icon: DollarSign,
-      category: 'contract'
+      category: 'contract',
+      dates: "January 2023 - August 2023"
     },
     {
       title: "Metamorphic – 3D Audiovisual NFT Album",
@@ -152,7 +177,8 @@ function ProjectsContent() {
         "Delivered the first immersive web3-native audiovisual album launched with multi-device 3D access",
       ],
       icon: Music,
-      category: 'contract'
+      category: 'contract',
+      dates: "March 2022 - January 2023"
     },
     {
       title: "PLAYCE – Context Engineering Playground",
@@ -170,7 +196,27 @@ function ProjectsContent() {
         "Deploys instantly on Vercel with full light/dark mode support"
       ],
       icon: Code,
-      category: 'personal'
+      category: 'personal',
+      dates: "2025"
+    },
+    {
+      title: "Sofa King Fest – Emergency Response Livestream Festival",
+      description: "Sofa King Fest was an emergency-response online music and arts festival launched at the onset of the COVID-19 pandemic. Designed to fight quarantine boredom and support artists, it featured livestream performances, an artist directory, and donation campaigns benefiting musicians, crew, and industry workers worldwide. As part of the organizing team via 504LIFE, I helped launch and promote the festival.",
+      tags: ["Music", "COVID Relief", "Partnerships", "Web Design", "Event Marketing"],
+      links: {
+        live: "https://concreteplayground.com/brisbane/arts-entertainment/sofa-king-fest#:~:text=Dubbed%20an%20%22emergency%20response%20online,Underground%20(formerly%20The%20Basement).&text=While%20the%20artists%20are%20playing,adhering%20to%20self%2Disolation%20measures.",
+        github: null
+      },
+      featured: false,
+      results: [
+        "Built the main 504LIFE.org site using Squarespace to host livestream programming and resources",
+        "Managed partnerships with New Orleans–based venues and nonprofits",
+        "Executed a multi-channel distribution strategy across dozens of orgs",
+        "Helped raise over $100,000 for COVID-19 relief efforts in Louisiana and Colorado"
+      ],
+      icon: Music,
+      category: 'personal',
+      dates: "April 2020 - July 2020"
     }
   ];
 
@@ -237,7 +283,7 @@ function ProjectsContent() {
 
   return (
     <div className="min-h-screen py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -281,18 +327,14 @@ function ProjectsContent() {
               >
                 <div className="space-y-8">
                   {section.projects.map((project, idx) => (
-                                    <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 32 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: idx * 0.08 }}
-                  className={`relative rounded-xl transition-all duration-300 hover:shadow-lg transition-colors duration-150 ${
-                    idx % 2 === 0 
-                      ? "bg-white dark:bg-zinc-900" 
-                      : "bg-zinc-50 dark:bg-zinc-800"
-                  } ${idx !== 0 ? "border-t border-zinc-200 dark:border-zinc-700" : ""} p-6 md:p-8 shadow-md dark:shadow-none border border-zinc-200 dark:border-transparent`}
-                >
+                    <motion.div
+                      key={project.title}
+                      initial={{ opacity: 0, y: 32 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.6, delay: idx * 0.08 }}
+                      className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm dark:shadow-none transition-colors duration-150"
+                    >
                       <WorkCard project={project} />
                     </motion.div>
                   ))}
