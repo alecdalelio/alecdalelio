@@ -32,30 +32,22 @@ export default function Home() {
     {
       icon: Brain,
       title: "Agent Design",
-      description: "Currently experimenting with agentic workflows, multi-agent orchestration, and model context protocol (MCP)",
-      status: "Deep Dive",
-      statusColor: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+      description: "Currently experimenting with agentic workflows, multi-agent orchestration, and model context protocol (MCP)"
     },
     {
       icon: Zap,
       title: "Systems Prototyping",
-      description: "Using tools like Attention, Zapier and n8n to build agent orchestration, self-healing workflows, and creative automation stacks.",
-      status: "Actively Shipping",
-      statusColor: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+      description: "Using tools like Attention, Zapier and n8n to build agent orchestration, self-healing workflows, and creative automation stacks."
     },
     {
       icon: Palette,
       title: "Creative Experiments",
-      description: "Exploring generative UI, LLM-driven sketching, and ways to bring my creative coding roots into AI interfaces.",
-      status: "Personal R&D",
-      statusColor: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300"
+      description: "Exploring generative UI, LLM-driven sketching, and ways to bring my creative coding roots into AI interfaces."
     },
     {
       icon: Code,
       title: "Exploring the Edges of Prompt Design",
-      description: "From embedded instructions to modular context assembly — always tinkering with how words shape machines.",
-      status: "Always On",
-      statusColor: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
+      description: "From embedded instructions to modular context assembly — always tinkering with how words shape machines."
     }
   ];
 
@@ -210,13 +202,10 @@ export default function Home() {
                         <activity.icon className="h-6 w-6 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
+                        <div className="mb-2">
                           <h3 className="font-semibold text-foreground">
                             {activity.title}
                           </h3>
-                          <span className={`px-2 py-1 text-xs font-medium rounded-full ${activity.statusColor}`}>
-                            {activity.status}
-                          </span>
                         </div>
                         <p className="text-foreground/70 text-sm leading-relaxed">
                           {activity.description}
