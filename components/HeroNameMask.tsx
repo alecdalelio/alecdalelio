@@ -3,7 +3,7 @@ import React from "react";
 export default function HeroNameMask() {
   return (
     <svg
-      className="block w-full h-[12rem] md:h-[14rem] select-none"
+      className="block w-full h-[8rem] sm:h-[10rem] md:h-[12rem] lg:h-[14rem] select-none"
       viewBox="0 0 1600 300"
       preserveAspectRatio="xMidYMid slice"
     >
@@ -23,7 +23,7 @@ export default function HeroNameMask() {
             textAnchor="middle"
             fontFamily="Inter, sans-serif"
             fontWeight="700"
-            fontSize="187"
+            style={{ fontSize: "clamp(2.5rem, 12vw, 7.5rem)" }}
             fill="white"
           >
             Alec D&apos;Alelio
