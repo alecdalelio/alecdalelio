@@ -38,6 +38,7 @@ export default function HeroNameMask() {
 
       {/* Gradient-filled text */}
       <rect
+
         width="100%"
         height="300"
         fill="url(#nameGradient)"
