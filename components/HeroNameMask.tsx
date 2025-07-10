@@ -24,10 +24,11 @@ export default function HeroNameMask() {
             fontFamily="Inter, sans-serif"
             fontWeight="700"
             style={{
-              fontSize: "clamp(3rem, 20vw, 10rem)",
+              fontSize: "clamp(3.75rem, 20vw, 10rem)",
               paintOrder: "stroke",
               strokeWidth: 0.5,
               stroke: "rgba(0,0,0,0.25)",
+              opacity: 1,
             }}
             fill="white"
           >
