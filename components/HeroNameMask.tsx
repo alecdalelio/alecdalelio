@@ -3,7 +3,7 @@ import React from "react";
 export default function HeroNameMask() {
   return (
     <svg
-      className="block w-full h-[8rem] sm:h-[10rem] md:h-[12rem] lg:h-[14rem] select-none"
+      className="block w-full px-4 select-none"
       viewBox="0 0 1600 300"
       preserveAspectRatio="xMidYMid slice"
     >
@@ -23,7 +23,12 @@ export default function HeroNameMask() {
             textAnchor="middle"
             fontFamily="Inter, sans-serif"
             fontWeight="700"
-            style={{ fontSize: "clamp(2.5rem, 12vw, 7.5rem)" }}
+            style={{
+              fontSize: "clamp(3rem, 20vw, 10rem)",
+              paintOrder: "stroke",
+              strokeWidth: 0.5,
+              stroke: "rgba(0,0,0,0.25)",
+            }}
             fill="white"
           >
             Alec D&apos;Alelio
@@ -33,7 +38,7 @@ export default function HeroNameMask() {
 
       {/* Gradient-filled text */}
       <rect
-        width="1600"
+        width="100%"
         height="300"
         fill="url(#nameGradient)"
         mask="url(#nameMask)"

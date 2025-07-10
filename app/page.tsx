@@ -60,7 +60,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <section className="min-h-screen flex flex-col items-center pt-[22vh] sm:pt-28 relative overflow-hidden">
         {/* Animated Background */}
         <FloatingContextBlocks />
         <ParticleNetwork />
