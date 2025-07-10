@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-[#0c0c0c] transition-colors duration-300`}
       >
@@ -46,7 +46,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <ThemeToggle />
+          {false && <ThemeToggle />}
         </ThemeProvider>
       </body>
     </html>
