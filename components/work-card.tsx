@@ -70,7 +70,6 @@ export default function WorkCard({ project }: { project: Project }) {
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.2 }}
                     className="text-xs md:text-sm text-foreground/70 flex items-start space-x-2 group"
-                    whileHover={{ scale: 1.03, boxShadow: "0 0 0 2px #a1a1aa33" }}
                   >
                     <span className="text-primary mt-1">•</span>
                     <span>{result}</span>

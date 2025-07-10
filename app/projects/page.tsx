@@ -200,6 +200,25 @@ function ProjectsContent() {
       dates: "2025"
     },
     {
+      title: "Everything In Its Right Place",
+      description: "Managed end-to-end production of _Everything In Its Right Place_, a curated anthology on blockchain's impact in the music industry—coordinating writers, designers, and freelance contractors to deliver a polished manuscript on schedule. Designed and maintained the project's Trello workflow for seamless task handoffs and cross-functional alignment. Supervised all book formatting and cover art design, ensuring high-quality deliverables and on-time publication.",
+      tags: ["Project Management", "Publishing", "Blockchain", "Music Industry", "Content Coordination", "Design Oversight"],
+      links: {
+        live: "https://www.amazon.com/Everything-Its-Right-Place-Transparent/dp/0999331604",
+        github: null
+      },
+      featured: false,
+      results: [
+        "Coordinated end-to-end production of a curated anthology on blockchain's music industry impact",
+        "Managed writers, designers, and freelance contractors to deliver polished manuscript on schedule",
+        "Designed and maintained Trello workflow for seamless task handoffs and cross-functional alignment",
+        "Supervised book formatting and cover art design, ensuring high-quality deliverables and on-time publication"
+      ],
+      icon: FileText,
+      category: 'personal',
+      dates: "June 2017 - September 2017"
+    },
+    {
       title: "Sofa King Fest – Emergency Response Livestream Festival",
       description: "Sofa King Fest was an emergency-response online music and arts festival launched at the onset of the COVID-19 pandemic. Designed to fight quarantine boredom and support artists, it featured livestream performances, an artist directory, and donation campaigns benefiting musicians, crew, and industry workers worldwide. As part of the organizing team via 504LIFE, I helped launch and promote the festival.",
       tags: ["Music", "COVID Relief", "Partnerships", "Web Design", "Event Marketing"],
@@ -252,10 +271,39 @@ function ProjectsContent() {
     return true;
   });
 
-  // Group filtered projects by category
-  const fulltimeProjects = filteredProjects.filter(p => p.category === 'fulltime');
-  const contractProjects = filteredProjects.filter(p => p.category === 'contract');
-  const personalProjects = filteredProjects.filter(p => p.category === 'personal');
+  // Helper function to parse dates for sorting
+  const parseDate = (dateString: string) => {
+    // Handle different date formats
+    if (dateString.includes('Present')) return new Date('2099-12-31'); // Future date for "Present"
+    if (dateString.includes('-')) {
+      // Format like "June 2017 - September 2017" or "2025"
+      const parts = dateString.split('-');
+      const firstPart = parts[0].trim();
+      if (firstPart.match(/^\d{4}$/)) {
+        // Just year like "2025"
+        return new Date(`${firstPart}-01-01`);
+      } else {
+        // Month year format like "June 2017"
+        const monthYear = firstPart.split(' ');
+        if (monthYear.length === 2) {
+          const month = monthYear[0];
+          const year = monthYear[1];
+          const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
+          return new Date(`${year}-${(monthIndex + 1).toString().padStart(2, '0')}-01`);
+        }
+      }
+    }
+    // Fallback for other formats
+    return new Date('1900-01-01');
+  };
+
+  // Group filtered projects by category and sort by date (newest first)
+  const fulltimeProjects = filteredProjects.filter(p => p.category === 'fulltime')
+    .sort((a, b) => parseDate(b.dates).getTime() - parseDate(a.dates).getTime());
+  const contractProjects = filteredProjects.filter(p => p.category === 'contract')
+    .sort((a, b) => parseDate(b.dates).getTime() - parseDate(a.dates).getTime());
+  const personalProjects = filteredProjects.filter(p => p.category === 'personal')
+    .sort((a, b) => parseDate(b.dates).getTime() - parseDate(a.dates).getTime());
 
   const sections = [
     {

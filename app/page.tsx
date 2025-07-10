@@ -9,6 +9,7 @@ import ParticleNetwork from "@/components/particle-network";
 import ProceduralBackground from "@/components/procedural-background";
 import RotatingTagline from "@/components/rotating-tagline";
 import HeroCTA from "@/components/hero-cta";
+import HeroNameMask from "@/components/HeroNameMask";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -73,14 +74,13 @@ export default function Home() {
             className="space-y-6"
           >
             {/* Name with enhanced styling */}
-            <motion.h1 
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text"
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              Alec D'Alelio
-            </motion.h1>
+              <HeroNameMask />
+            </motion.div>
             
             {/* Rotating subtitle with enhanced animation */}
             <motion.div
