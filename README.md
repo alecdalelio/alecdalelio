@@ -17,7 +17,7 @@ Our tools are used by 300+ companies from SMB to Enterprise and growing fast.
 ### 🧪 Projects & Experiments
 
 - **IKIGEN** → an AI-guided reflection app to help people discover their purpose (WIP)
-- **Cursor Playground** → a developer sandbox for prompt debugging and context engineering
+- **PLAYCE** → a developer sandbox for prompt debugging and context engineering
 - **AI Automation Workflows** → n8n pipelines, LangChain agents, and browser-native tools
 
 ---
