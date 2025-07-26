@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alec D'Alelio
 
-## Getting Started
+👋 Hey there! I’m Alec — a developer, automation architect, and creative technologist based in NYC.
 
-First, run the development server:
+I build expressive tools and AI-powered workflows that help people move faster, think better, and create more freely.
+
+---
+
+### 💼 Currently
+
+**Founding Forward Deployed Engineer @ [Attention](https://attention.com)**  
+I design and deploy AI agents that integrate with CRM and communications tools — helping revenue teams surface insights, automate follow-ups, and accelerate sales cycles.  
+Our tools are used by 80+ companies and growing fast.
+
+---
+
+### 🧪 Projects & Experiments
+
+- **IKIGEN** → an AI-guided reflection app to help people discover their purpose (WIP)
+- **Cursor Playground** → a developer sandbox for prompt debugging and context engineering
+- **AI Automation Workflows** → n8n pipelines, LangChain agents, and browser-native tools
+
+---
+
+### 🛠️ Tech I Use Often
+
+`TypeScript` · `Next.js` · `React` · `Tailwind` · `LangChain` · `n8n` · `Supabase` · `Vercel` · `Cursor`
+
+---
+
+### 🌐 Connect
+
+- Portfolio: [alecd.alelio.vercel.app](https://alecd.alelio.vercel.app)
+- GitHub: [@alecdalelio](https://github.com/alecdalelio)
+- Email: [alecdalelio@gmail.com](mailto:alecdalelio@gmail.com)
+
+---
+
+_This site is built with [Next.js](https://nextjs.org) and deployed via [Vercel](https://vercel.com)._
+
+Want to run it locally?
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
