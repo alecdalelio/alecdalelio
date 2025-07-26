@@ -10,7 +10,7 @@ I build expressive tools and AI-powered workflows that help people move faster, 
 
 **Founding Forward Deployed Engineer @ [Attention](https://attention.com)**  
 I design and deploy AI agents that integrate with CRM and communications tools — helping revenue teams surface insights, automate follow-ups, and accelerate sales cycles.  
-Our tools are used by 80+ companies and growing fast.
+Our tools are used by 300+ companies from SMB to Enterprise and growing fast.
 
 ---
 
