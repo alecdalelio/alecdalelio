@@ -30,7 +30,7 @@ Our tools are used by 300+ companies from SMB to Enterprise and growing fast.
 
 ### 🌐 Connect
 
-- Portfolio: [alecd.alelio.vercel.app](https://alecd.alelio.vercel.app)
+- Portfolio: [alecdalelio.vercel.app](https://alecd.alelio.vercel.app)
 - GitHub: [@alecdalelio](https://github.com/alecdalelio)
 - Email: [alecdalelio@gmail.com](mailto:alecdalelio@gmail.com)
 
