@@ -181,6 +181,25 @@ function ProjectsContent() {
       dates: "March 2022 - January 2023"
     },
     {
+      title: "Ikigen – AI-Powered Ikigai Discovery",
+      description: "A thoughtfully crafted web application that guides users through a meditative journey of self-discovery, helping them uncover their personal Ikigai—the Japanese concept of 'reason for being.' Built with Next.js, TypeScript, and Tailwind CSS, the app features a four-step reflection process that explores what users love, what they're good at, what the world needs, and how they can sustain themselves, culminating in an AI-generated personalized insight using OpenAI's GPT-3.5.",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API", "AI", "UX Design", "Japanese Aesthetics", "Personal Growth"],
+      links: {
+        live: "https://ikigen.vercel.app/",
+        github: null
+      },
+      featured: true,
+      results: [
+        "Four-step guided reflection process exploring love, skills, world needs, and sustainability",
+        "AI-generated personalized insights using OpenAI's GPT-3.5 for meaningful self-discovery",
+        "Japanese minimalism aesthetic with soft gradients, gentle animations, and poetic typography",
+        "Structured three-part output: Ikigai statement, significance, and actionable next steps"
+      ],
+      icon: Compass,
+      category: 'personal',
+      dates: "2025"
+    },
+    {
       title: "PLAYCE – Context Engineering Playground",
       description: "A visual playground for understanding how different types of context affect LLM responses. Users can toggle between system prompts, user messages, examples, and constraints to observe how small changes impact model behavior — all within a minimal, real-time interface. Built to help developers and prompt engineers explore multi-component prompting concepts with clarity.",
       tags: ["React", "Tailwind CSS", "Framer Motion", "OpenAI API", "Cursor"],
