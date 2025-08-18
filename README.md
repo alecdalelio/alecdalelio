@@ -24,22 +24,15 @@ Our tools are used by 300+ companies from SMB to Enterprise and growing fast.
 
 ### 🛠️ Tech I Use Often
 
-`TypeScript` · `Next.js` · `React` · `Tailwind` · `LangChain` · `n8n` · `Supabase` · `Vercel` · `Cursor`
+`TypeScript` · `Next.js` · `React` · `Tailwind` · `n8n` · `Supabase` · `Vercel` · `Cursor`
 
 ---
 
 ### 🌐 Connect
 
-- Portfolio: [alecdalelio.vercel.app](https://alecd.alelio.vercel.app)
+- Portfolio: [alecdalelio.vercel.app](https://alecdalelio.vercel.app)
 - GitHub: [@alecdalelio](https://github.com/alecdalelio)
 - Email: [alecdalelio@gmail.com](mailto:alecdalelio@gmail.com)
 
 ---
 
-_This site is built with [Next.js](https://nextjs.org) and deployed via [Vercel](https://vercel.com)._
-
-Want to run it locally?
-
-```bash
-npm install
-npm run dev
